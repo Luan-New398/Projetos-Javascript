@@ -40,7 +40,7 @@ function sortear() {
         let R = document.getElementById("resultado");
         R.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${Ns}</label>`
 
-        AlterarBotao();
+        AlterarBotao("btn-reiniciar");
 
 }
 
@@ -52,7 +52,7 @@ function RNG(min, max) {
 
 function AlterarBotao(ID) {
 
-    let btn = document.getElementById("btn-reiniciar");
+    let btn = document.getElementById(ID);
 
     if (btn.classList.contains("container__botao-desabilitado")) {
 
@@ -75,6 +75,6 @@ function reiniciar() {
     document.getElementById("de").value = "";
     document.getElementById("ate").value = "";
     document.getElementById("resultado").innerHTML = `<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>`
-    AlterarBotao();
+    AlterarBotao("btn-reiniciar");
 
 }
