@@ -9,19 +9,72 @@ function sortear() {
         alert(N);*/
 
         let Ns = [];
-        for (let i = 0; i < Q; i++) {
+        let N;
 
-            Ns.push(RNG(Min,Max));
-            //Forma diferente que a da Alura
+        if (Q > Max) {
+
+            alert("Operação inpossível");
+            return;
 
         }
 
-        alert(Ns);
+        for (let i = 0; i < Q; i++) {
+
+            //Ns.push(RNG(Min,Max));
+            //Forma diferente que a da Alura
+
+            N = RNG(Min,Max);
+
+            while (Ns.includes(N)) {
+
+            N = RNG(Min,Max);
+
+            }
+
+            Ns.push(N);
+
+        }
+
+        //alert(Ns);
+
+        let R = document.getElementById("resultado");
+        R.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${Ns}</label>`
+
+        AlterarBotao();
 
 }
 
 function RNG(min, max) {
     
     return(Math.floor(Math.random() * (max - min + 1)) + min);
+
+}
+
+function AlterarBotao(ID) {
+
+    let btn = document.getElementById("btn-reiniciar");
+
+    if (btn.classList.contains("container__botao-desabilitado")) {
+
+        btn.classList.remove("container__botao-desabilitado");
+        btn.classList.add("container__botao")
+
+    } else {
+
+        btn.classList.remove("container__botao");
+        btn.classList.add("container__botao-desabilitado")
+
+    }
+
+
+}
+
+function reiniciar() {
+
+    document.getElementById("quantidade").value = ""; 
+    document.getElementById("de").value = "";
+    document.getElementById("ate").value = "";
+    document.getElementById("resultado").innerHTML = `<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>`
+    AlterarBotao();
 
 }
